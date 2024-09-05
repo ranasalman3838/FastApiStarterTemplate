@@ -7,9 +7,6 @@ import os
 load_dotenv()
 
 
-
-
-
 class Settings(BaseSettings):
     """
     This Settings class is designed to load and manage environment variables for an
@@ -20,9 +17,9 @@ class Settings(BaseSettings):
     """
 
 
-    OPENAI_API_KEY:str = os.environ.get("OPENAI_API_KEY")
-    OPENAI_MODEL_NAME:str = os.environ.get("OPENAI_MODEL_NAME")
-    PINECONE_API_KEY : str = os.environ.get("PINECONE_API_KEY")
+    # OPENAI_API_KEY:str = os.environ.get("OPENAI_API_KEY")
+    # OPENAI_MODEL_NAME:str = os.environ.get("OPENAI_MODEL_NAME")
+    # PINECONE_API_KEY : str = os.environ.get("PINECONE_API_KEY")
 
     PG_HOST : str = os.environ.get("PG_HOST")
     PG_PORT : str = os.environ.get("PG_PORT")
@@ -31,8 +28,13 @@ class Settings(BaseSettings):
     PG_DATABASE : str = os.environ.get("PG_DATABASE")
 
 
+    @property
+    def DATABASE_URL(self) -> str:
+        return f"postgresql://{self.PG_USER}:{self.PG_PASSWORD}@{self.PG_HOST}:{self.PG_PORT}/{self.PG_DATABASE}"
+
     class Config:
         env_file = ".env"
+
 
 settings = Settings()
 

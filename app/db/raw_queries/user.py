@@ -1,4 +1,4 @@
-from app.db.connection import get_db_connection
+from app.core.postgres_connection import get_db_connection
 
 
 def sample_query_function():

@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from app.api.router import api_router
+from app.core.sql_alchemy_connection import engine, Base
 
 app = FastAPI()
 
@@ -18,6 +19,11 @@ app.add_middleware(
 
 app.include_router(api_router, prefix="/api")
 
+def create_tables():
+    Base.metadata.create_all(bind=engine)
+
+# Call the function to create tables
+create_tables()
 @app.get("/", response_class=HTMLResponse)
 def index():
     message = "Starter Template for FastAPI"
