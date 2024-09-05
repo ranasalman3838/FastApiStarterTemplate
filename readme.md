@@ -1,7 +1,7 @@
-# Start template Project
+# Starter FastApi template Project
 
 ## Project Name
-Starter template for your Project
+Starter template for your fastapi Project
 
 ## Description
 This project is designed for your convenience, providing a template to build scalable and large projects using FastAPI. It includes essential features such as database configuration, routing, environment variables, and more to help you get started quickly and efficiently.
