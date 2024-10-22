@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse
 user_router = APIRouter()
 
 
-@user_router.post("/user_data_test_do")
+@user_router.post("/user_data")
 async def vendorScores():
 
     data = {
